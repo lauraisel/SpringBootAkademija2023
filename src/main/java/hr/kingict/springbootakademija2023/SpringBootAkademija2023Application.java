@@ -3,7 +3,7 @@ package hr.kingict.springbootakademija2023;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication//(scanBasePackages = {"hr.kingict.springbootakademija2023","util"})
 public class SpringBootAkademija2023Application {
 
     public static void main(String[] args) {
