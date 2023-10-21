@@ -56,6 +56,28 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getAirports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/LetoviTest/api/airports/London",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"LetoviTest",
+						"api",
+						"airports",
+						"London"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
