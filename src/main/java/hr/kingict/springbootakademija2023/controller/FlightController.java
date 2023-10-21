@@ -26,7 +26,7 @@ public class FlightController {
         List<Location> airports = flightService.getAirports(keyword);
 
         List<LocationDto> listAirportsDto =airports.stream()
-                .map(location -> new LocationDto(location.getName()))
+                .map(location -> new LocationDto(location.getName(), location.getDetailedName(), location.getIataCode()))
                 .toList();
 
         return ResponseEntity
