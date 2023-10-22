@@ -1,7 +1,6 @@
 package hr.kingict.springbootakademija2023.service;
 
 import com.amadeus.Amadeus;
-import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.Location;
 import com.amadeus.Params;
@@ -48,9 +47,9 @@ public class FlightService {
                 .and("max", 10);
 
 
-        FlightOfferSearch[] flightOfferSearches = new FlightOfferSearch[0];
+
         try {
-            flightOfferSearches = amadeus.shopping.flightOffersSearch.get(params);
+            FlightOfferSearch[] flightOfferSearches = amadeus.shopping.flightOffersSearch.get(params);
             return Arrays.asList(flightOfferSearches);
         } catch (Exception e) {
           logger.error("getFlights : " + e.getMessage(),e);
