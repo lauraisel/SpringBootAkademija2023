@@ -28,10 +28,6 @@ public class FlightOfferSearchFlightSearchDtoMapper {
         FlightOfferSearch.AirportInfo inboundArrivalSegment =inboundItinerary.getSegments()[0].getArrival();
 
 
-     //   FlightOfferSearch.SearchSegment inboundDepartureSegment = inboundItinerary.getSegments()[0];
-       // FlightOfferSearch.SearchSegment inboundArrivalSegment = inboundItinerary.getSegments()[1];
-
-
         //outbound data
         flightSearchDto.setOutboundDepartureAirport(outboundDepartureSegment.getIataCode());
         flightSearchDto.setOutboundDepartureDate(outboundDepartureSegment.getAt());
@@ -52,6 +48,7 @@ public class FlightOfferSearchFlightSearchDtoMapper {
         flightSearchDto.setInboundCarrier(inboundItinerary.getSegments()[0].getCarrierCode());
 
 
+        //price
         flightSearchDto.setPrice(flightOfferSearch.getPrice().getTotal());
 
 
