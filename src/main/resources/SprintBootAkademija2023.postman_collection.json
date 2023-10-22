@@ -78,6 +78,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getFlights",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"originLocationCode\" : \"\",\n    \"destinationLocationCode\" : \"\",\n    \"departureDate\" : \"\",\n    \"returnDate\" : \"\",\n    \"adults\" : \"\"\n\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/LetoviTest/api/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"LetoviTest",
+						"api",
+						"flights"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
