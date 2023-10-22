@@ -5,6 +5,7 @@ import com.amadeus.resources.Location;
 import hr.kingict.springbootakademija2023.dto.FlightSearchDto;
 import hr.kingict.springbootakademija2023.dto.LocationDto;
 import hr.kingict.springbootakademija2023.form.FlightSearchForm;
+import hr.kingict.springbootakademija2023.mapper.FlightOfferSearchFlightSearchDtoMapper;
 import hr.kingict.springbootakademija2023.service.FlightService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class FlightController {
 
     @Autowired
     private FlightService flightService;
+    @Autowired
+    private FlightOfferSearchFlightSearchDtoMapper flightSearchDtoMapper;
 
     @GetMapping(value="/airports/{keyword}")
     public ResponseEntity<List<LocationDto>> getAirports(@PathVariable String keyword){
@@ -41,11 +44,13 @@ public class FlightController {
     public ResponseEntity<List<FlightSearchDto>> getFlights(@RequestBody @Valid FlightSearchForm flightSearchForm){
        List<FlightOfferSearch> flights =  flightService.getFlights(flightSearchForm.getOriginLocationCode(),flightSearchForm.getDestinationLocationCode(),flightSearchForm.getDepartureDate(),flightSearchForm.getReturnDate(),flightSearchForm.getAdults());
 
-       FlightSearchDto flightSearchDto = new FlightSearchDto();
 
        return ResponseEntity
                .ok()
-               .body(Arrays.asList(flightSearchDto));
+               .body(flights
+                       .stream()
+                       .map(flightOfferSearch -> flightSearchDtoMapper.map(flightOfferSearch))
+                       .toList());
     }
 
 }

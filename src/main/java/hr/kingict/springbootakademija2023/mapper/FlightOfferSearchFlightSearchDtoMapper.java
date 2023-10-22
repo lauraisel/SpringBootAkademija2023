@@ -21,31 +21,35 @@ public class FlightOfferSearchFlightSearchDtoMapper {
         FlightOfferSearch.Itinerary inboundItinerary = flightOfferSearch.getItineraries()[1];
 
         //search Segments
-        FlightOfferSearch.SearchSegment outboundDepartureSegment = outboundItinerary.getSegments()[0];
-        FlightOfferSearch.SearchSegment outboundArrivalSegment = outboundItinerary.getSegments()[1];
+        FlightOfferSearch.AirportInfo outboundDepartureSegment = outboundItinerary.getSegments()[0].getDeparture();
+        FlightOfferSearch.AirportInfo outboundArrivalSegment = outboundItinerary.getSegments()[0].getArrival();
 
-        FlightOfferSearch.SearchSegment inboundDepartureSegment = inboundItinerary.getSegments()[0];
-        FlightOfferSearch.SearchSegment inboundArrivalSegment = inboundItinerary.getSegments()[1];
+        FlightOfferSearch.AirportInfo inboundDepartureSegment =inboundItinerary.getSegments()[0].getDeparture();
+        FlightOfferSearch.AirportInfo inboundArrivalSegment =inboundItinerary.getSegments()[0].getArrival();
+
+
+     //   FlightOfferSearch.SearchSegment inboundDepartureSegment = inboundItinerary.getSegments()[0];
+       // FlightOfferSearch.SearchSegment inboundArrivalSegment = inboundItinerary.getSegments()[1];
 
 
         //outbound data
-        flightSearchDto.setOutboundDepartureAirport(outboundDepartureSegment.getDeparture().getIataCode());
-        flightSearchDto.setOutboundDepartureDate(outboundDepartureSegment.getDeparture().getAt());
+        flightSearchDto.setOutboundDepartureAirport(outboundDepartureSegment.getIataCode());
+        flightSearchDto.setOutboundDepartureDate(outboundDepartureSegment.getAt());
 
-        flightSearchDto.setOutboundArrivalAirport(outboundArrivalSegment.getDeparture().getIataCode());
-        flightSearchDto.setOutboundArrivalDate(outboundArrivalSegment.getDeparture().getAt());
+        flightSearchDto.setOutboundArrivalAirport(outboundArrivalSegment.getIataCode());
+        flightSearchDto.setOutboundArrivalDate(outboundArrivalSegment.getAt());
 
-        flightSearchDto.setOutboundCarrier(outboundDepartureSegment.getCarrierCode());
+        flightSearchDto.setOutboundCarrier(outboundItinerary.getSegments()[0].getCarrierCode());
 
         //inbound data
 
-        flightSearchDto.setInboundDepartureAirport(inboundDepartureSegment.getDeparture().getIataCode());
-        flightSearchDto.setInboundDepartureDate(inboundDepartureSegment.getDeparture().getAt());
+        flightSearchDto.setInboundDepartureAirport(inboundDepartureSegment.getIataCode());
+        flightSearchDto.setInboundDepartureDate(inboundDepartureSegment.getAt());
 
-        flightSearchDto.setInboundArrivalAirport(inboundArrivalSegment.getDeparture().getIataCode());
-        flightSearchDto.setInboundArrivalDate(inboundArrivalSegment.getDeparture().getAt());
+        flightSearchDto.setInboundArrivalAirport(inboundArrivalSegment.getIataCode());
+        flightSearchDto.setInboundArrivalDate(inboundArrivalSegment.getAt());
 
-        flightSearchDto.setInboundCarrier(inboundDepartureSegment.getCarrierCode());
+        flightSearchDto.setInboundCarrier(inboundItinerary.getSegments()[0].getCarrierCode());
 
 
         flightSearchDto.setPrice(flightOfferSearch.getPrice().getTotal());
